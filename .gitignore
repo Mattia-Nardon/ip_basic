@@ -1,6 +1,7 @@
 *.pyc
 
 outputs
+output_tmp
 
 # PyCharm
 .idea

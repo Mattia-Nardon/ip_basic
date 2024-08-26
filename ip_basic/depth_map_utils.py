@@ -205,7 +205,7 @@ def fill_in_multiscale(depth_map, max_depth=100.0,
     s4_blurred_depths[valid_pixels] = blurred[valid_pixels]
 
     # Calculate a top mask
-    top_mask = np.ones(depths_in.shape, dtype=np.bool)
+    top_mask = np.ones(depths_in.shape, dtype=bool)
     for pixel_col_idx in range(s4_blurred_depths.shape[1]):
         pixel_col = s4_blurred_depths[:, pixel_col_idx]
         top_pixel_row = np.argmax(pixel_col > 0.1)
@@ -222,7 +222,7 @@ def fill_in_multiscale(depth_map, max_depth=100.0,
 
     # Extend highest pixel to top of image or create top mask
     s6_extended_depths = np.copy(s5_dilated_depths)
-    top_mask = np.ones(s5_dilated_depths.shape, dtype=np.bool)
+    top_mask = np.ones(s5_dilated_depths.shape, dtype=bool)
 
     top_row_pixels = np.argmax(s5_dilated_depths > 0.1, axis=0)
     top_pixel_values = s5_dilated_depths[top_row_pixels,
