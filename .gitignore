@@ -2,6 +2,9 @@
 
 outputs
 output_tmp
+tmp
+process/*
+process/s5_combined_depths.png
 
 # PyCharm
 .idea
