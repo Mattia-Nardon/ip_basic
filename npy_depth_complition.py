@@ -81,6 +81,7 @@ def main(args):
 
         # Load depth projections from uint16 image
         depth_image = np.load(depth_image_path)
+        depth_image *= args.scale
         projected_depths = np.float32(depth_image / 256.0)
               
         # Fill in
@@ -163,7 +164,8 @@ if __name__ == "__main__":
     parser.add_argument('-fill_type', type=str, default='multiscale', help='Type of fill to use (fast, multiscale)')
     parser.add_argument('-extrapolate', type=bool, default=False, help='Whether to extrapolate')
     parser.add_argument('-blur_type', type=str, default='bilateral', help='Type of blur to use (gaussian, bilateral)')
-    parser.add_argument('-max_depth', type=float, default=100.0, help='Maximum depth to use for filling')
+    parser.add_argument('-max_depth', type=float, default=2000.0, help='Maximum depth to use for filling')
+    parser.add_argument('-scale', type=float, default=1.0, help='Scale factor to apply to the depth images')
 
     # Parse the command-line arguments
     args = parser.parse_args()    
